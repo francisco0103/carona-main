@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const Passenger = () => {
   const [name, setName] = useState('');
@@ -12,11 +13,13 @@ const Passenger = () => {
     // Aqui você pode adicionar a lógica para enviar os dados para o servidor
     Alert.alert('Cadastro realizado!', `Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}`);
   };
-
+  const router = useRouter()
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <MaterialIcons name='arrow-back' color={'#fff'} size={30} />
+        <TouchableOpacity onPress={() => router.back()}>
+          <MaterialIcons name='arrow-back' color='#fff' size={32} />
+        </TouchableOpacity>
         <Text style={styles.headerText}>Cadastro de Passageiro</Text>
       </View>
       <Text style={styles.subHeaderText}>Vamos Realizar Seu Cadastro</Text>
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     width: 500,
-    alignItems:'center',
+    alignItems: 'center',
     alignSelf: 'center',
     position: 'relative'
   },

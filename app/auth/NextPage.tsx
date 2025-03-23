@@ -1,7 +1,8 @@
 // src/components/NextPage.tsx
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { getDriverData } from './driverData'; // Importa a função de recuperar dados
+import { Link } from 'expo-router';
 
 const NextPage: React.FC = () => {
   const [driverData, setDriverData] = useState<any>(null);
@@ -30,12 +31,18 @@ const NextPage: React.FC = () => {
       ) : (
         <Text>Carregando dados...</Text>
       )}
+      <Link href={"/layouts/telainicial"}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Continuar</Text>
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fff',
     flex: 1,
     padding: 20,
     alignItems: 'center',
@@ -46,6 +53,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
+  button: {
+    backgroundColor: '#000', // Cor de fundo do botão
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    width: '90%', // Ajustado para 90% para melhor responsividade
+    alignSelf: 'center', // Centraliza o botão
+    elevation: 3, // Sombra para Android
+    shadowColor: '#000', // Sombra para iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    margin: 15
+
+  },
+  buttonText: {
+    color: '#FFFFFF', // Cor do texto do botão
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center', // Centraliza o texto do botão
+  }
 });
 
 export default NextPage;

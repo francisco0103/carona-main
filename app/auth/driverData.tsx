@@ -41,3 +41,5 @@ export const removeDriverData = async (): Promise<void> => {
     console.error('Erro ao remover dados do motorista:', error);
   }
 };
+
+export default DriverData
