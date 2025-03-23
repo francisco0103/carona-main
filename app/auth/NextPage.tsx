@@ -1,6 +1,6 @@
 // src/components/NextPage.tsx
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { getDriverData } from './driverData'; // Importa a função de recuperar dados
 
 const NextPage: React.FC = () => {
@@ -36,6 +36,7 @@ const NextPage: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fff',
     flex: 1,
     padding: 20,
     alignItems: 'center',
