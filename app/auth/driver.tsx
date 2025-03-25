@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     
   },
   title: {
-    paddingVertical: 16,
+    paddingVertical: 1,
     fontSize: 24, // Reduzido para melhor responsividade
     fontWeight: '500',
     textAlign: 'left',
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     backgroundColor: '#000',
     padding: 15,
     borderRadius: 5,

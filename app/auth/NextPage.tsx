@@ -1,19 +1,23 @@
-// src/components/NextPage.tsx
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { getDriverData } from './driverData'; // Importa a função de recuperar dados
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router'; // Importa o hook useRouter
 
 const NextPage: React.FC = () => {
   const [driverData, setDriverData] = useState<any>(null);
+  const router = useRouter(); // aqui inicializa o router
 
-  useEffect(() => {
+  useEffect(() => {// banana
     const fetchData = async () => {
       const data = await getDriverData();
       setDriverData(data);
     };
     fetchData();
   }, []);
+
+  const handleContinue = () => {
+    router.push('/layouts/footer'); // certo fiz errado mas ja deu certo Navega para a rota desejada
+  };
 
   return (
     <View style={styles.container}>
@@ -31,11 +35,9 @@ const NextPage: React.FC = () => {
       ) : (
         <Text>Carregando dados...</Text>
       )}
-      <Link href={"/layouts/footer"}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Continuar</Text>
-        </TouchableOpacity>
-      </Link>
+      <TouchableOpacity style={styles.button} onPress={handleContinue}>
+        <Text style={styles.buttonText}>Continuar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -67,15 +69,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     margin: 15,
-    padding:15,
-    height:70
+    height: 70,
   },
   buttonText: {
     color: '#FFFFFF', // Cor do texto do botão
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center', // Centraliza o texto do botão
-  }
+  },
 });
 
 export default NextPage;
