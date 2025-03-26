@@ -2,18 +2,26 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Passenger = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
-  const handleRegister = () => {
-    // Aqui você pode adicionar a lógica para enviar os dados para o servidor
-    Alert.alert('Cadastro realizado!', `Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}`);
+  const handleRegister = async () => {
+    if (name && email && phone && password) {
+      const user = { name, email, phone, password };
+      await AsyncStorage.setItem('user', JSON.stringify(user));
+      Alert.alert('Cadastro realizado!', `Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}`);
+      router.push('/layouts/footter');
+    } else {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+    }
   };
-  const router = useRouter()
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -70,10 +78,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderRadius: 20,
-    width: 500,
+    width: '100%',
     alignItems: 'center',
     alignSelf: 'center',
-    position: 'relative'
   },
   header: {
     justifyContent: 'flex-start',
@@ -83,6 +90,7 @@ const styles = StyleSheet.create({
     height: 86,
     paddingHorizontal: 15,
     borderRadius: 20,
+    width: '100%',
   },
   headerText: {
     textAlign: 'center',
@@ -98,20 +106,19 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    borderColor: '#fffff',
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 20,
     paddingHorizontal: 10,
     marginBottom: 15,
-    width: 300,
+    width: '100%',
   },
   button: {
     backgroundColor: '#000',
     padding: 15,
     borderRadius: 20,
     alignItems: 'center',
-    width: 300,
-    alignSelf: 'center'
+    width: '100%',
   },
   buttonText: {
     color: '#fff',
@@ -120,3 +127,6 @@ const styles = StyleSheet.create({
 });
 
 export default Passenger;
+
+
+

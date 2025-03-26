@@ -7,7 +7,7 @@ const Footer = () => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
        <Image style={styles.image} source={require('../../assets/casa.jpg')} />
-       <Link href={"/layouts/map"}> <Image style={styles.image} source={require('../../assets/map.jpg')} />
+       <Link href={"/layouts/PassengerRoutesScreen"}> <Image style={styles.image} source={require('../../assets/map.jpg')} />
        </Link>
        <Link href={"/layouts/userperfil"}> <Image style={styles.image} source={require('../../assets/perfil.png')} /></Link>
       </View>

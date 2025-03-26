@@ -1,4 +1,3 @@
-// src/components/Driver.tsx
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Link, useRouter } from 'expo-router';
@@ -101,7 +100,7 @@ const Driver: React.FC = () => {
               style={styles.carInput}
               placeholder="Modelo do Carro"
               placeholderTextColor="#000000"
-              value={carModel}
+              value ={carModel}
               onChangeText={setCarModel}
             />
           </View>
@@ -132,23 +131,22 @@ const Driver: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: '5%', // Ajuste para 5% em vez de 20
+    paddingHorizontal: '5%',
     flex: 1,
     backgroundColor: '#fff',
     width: '100%',
     alignItems: 'center',
     alignSelf: 'center',
-    
   },
   title: {
     paddingVertical: 1,
-    fontSize: 24, // Reduzido para melhor responsividade
+    fontSize: 24,
     fontWeight: '500',
     textAlign: 'left',
   },
   userInfo: {
-    width: '100%', // Ajustado para 100% para melhor responsividade
-    maxWidth: 400, // Limite máximo para telas grandes
+    width: '100%',
+    maxWidth: 400,
   },
   input: {
     height: 50,
@@ -166,14 +164,14 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
-    width: '90%', // Ajustado para 90% para melhor responsividade
-    alignSelf: 'center', // Centraliza o botão
+    width: '90%',
+    alignSelf: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center', // Centraliza o texto do botão
+    textAlign: 'center',
   },
   carInputContainer: {
     flexDirection: 'row',
@@ -187,11 +185,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 5,
-    flex: 1, // Faz com que o input ocupe o espaço disponível
-    marginRight: 10, // Adiciona espaço entre os inputs
+    flex: 1,
+    marginRight: 10,
   },
   carInputLast: {
-    marginRight: 0, // Remove a margem direita do último input
+    marginRight: 0,
   },
 });
 
